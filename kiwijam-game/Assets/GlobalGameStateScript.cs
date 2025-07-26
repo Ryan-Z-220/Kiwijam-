@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GlobalGameStateScript : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class GlobalGameStateScript : MonoBehaviour
 
     public int playerScore = 0;
     public bool isGameOver = false;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
     private void Awake()
     {
