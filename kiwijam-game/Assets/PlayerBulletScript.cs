@@ -36,14 +36,13 @@ public class PlayerBulletScript : MonoBehaviour
                 }
             }
 
-            // bullet direction towards the nearest enemy
-            Vector2 direction = (nearestEnemy.transform.position - transform.position).normalized;
-            // instantiate the bullet prefab at the player's position with the direction towards the nearest enemy
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            // set the bullet's rotation to face the nearest enemy
-            bullet.transform.up = direction;
-            // set the bullet's speed
-            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * 10f; // Speed of the bullet
+            Vector2 dir = nearestEnemy.transform.position - bullet.transform.position;
+            bullet.transform.up = dir.normalized;
+
+
+
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * 10f;
         }
 
     }
