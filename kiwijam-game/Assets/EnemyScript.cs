@@ -3,11 +3,11 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
 
+    private GlobalGameStateScript _globalGameState;
     public float speed = 3f; // Speed at which the enemy moves towards the player
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-
+        _globalGameState = FindObjectOfType<GlobalGameStateScript>();
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
             Destroy(other.gameObject); // Destroy the player
             Destroy(gameObject); // Destroy the enemy
             Debug.Log("Player hit by enemy! Game Over.");
+            _globalGameState.GameOver();
         }
     }
 }
