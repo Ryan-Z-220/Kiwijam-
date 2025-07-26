@@ -48,9 +48,9 @@ public class BulletScript : MonoBehaviour
             Destroy(hit.collider.gameObject);
             Destroy(gameObject);
             // Instantiate explosion effect
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             // destroy explosion effect after 1 second
-            Destroy(explosionPrefab, 1f);
+            Destroy(explosion, 1f);
 
 
         }
