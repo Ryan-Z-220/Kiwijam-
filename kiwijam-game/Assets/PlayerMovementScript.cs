@@ -63,6 +63,12 @@ public class PlayerController2D : MonoBehaviour
     {
         // Apply movement to the player in FixedUpdate for physics consistency
         rb.linearVelocity = movement * speed;
+        //make sure you can't go off screen
+        Vector2 clampedPosition = new Vector2(
+            Mathf.Clamp(transform.position.x, -8f, 8f), // Assuming screen width
+            Mathf.Clamp(transform.position.y, -4.5f, 4.5f) // Assuming screen height
+        );
+        transform.position = clampedPosition;
     }
 
     void RotatePlayer(float x, float y)
