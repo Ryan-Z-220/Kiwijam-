@@ -42,7 +42,7 @@ public class Modifier
 }
 
 
-public class FlowerScript : MonoBehaviour
+public class Flower : MonoBehaviour
 {
 
     public static readonly Dictionary<FlowerRarity, Color> rarityColors = new()
