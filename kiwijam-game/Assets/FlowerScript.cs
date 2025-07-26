@@ -68,6 +68,14 @@ public class Flower : MonoBehaviour
             Modifier newModifier = new Modifier(modifierType, value);
             modifiers = modifiers.Append(newModifier).ToArray();
         }
+
+                if (UnityEngine.Random.Range(0,100) < 50) // 50% chance to flip the flower sprite
+        {
+            //flip the flower sprite on x axis
+            Vector3 scale = transform.localScale;
+            scale.x *= -1; // Flip the x scale
+            transform.localScale = scale;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
