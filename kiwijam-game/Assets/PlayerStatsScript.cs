@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStatsScript : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     public float movementSpeedMultiplier = 1.0f;
     public int bonusHealth = 0;
