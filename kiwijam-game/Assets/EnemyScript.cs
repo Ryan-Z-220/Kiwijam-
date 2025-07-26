@@ -32,6 +32,7 @@ public class EnemyScript : MonoBehaviour
             Destroy(gameObject); // Destroy the enemy
             Debug.Log("Player hit by enemy! Game Over.");
             _globalGameState.GameOver();
+            Time.timeScale = 0;
         }
     }
 }
