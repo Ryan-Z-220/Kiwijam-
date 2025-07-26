@@ -1,46 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public enum FlowerRarity
-{
-    Common,
-    Uncommon,
-    Rare,
-    Legendary
-}
-
-public enum Modifiers
-{
-    movement_speed,
-    bullet_speed,
-    firing_rate,
-    health,
-    damage,
-    score,
-    flower_drop_rate,
-}
-
-public class Modifier
-{
-    public Modifiers modifierType;
-    public float value;
-
-    public Modifier(Modifiers modifierType, float value)
-    {
-        this.modifierType = modifierType;
-        this.value = value;
-    }
-
-    public override string ToString()
-    {
-        return $"{value * 100}% increased {Modifiers.GetName(typeof(Modifiers), modifierType)}";
-    }
-
-}
-
 
 public class Flower : MonoBehaviour
 {
@@ -113,11 +74,51 @@ public class Flower : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Logic for when the player collects the flower
-            Debug.Log("Flower collected!");
             Destroy(gameObject); // Destroy the flower after collection
+
+            Inventory.AddFlower(this); // Add the flower to the player's inventory
 
             _globalGameState.ChangeScore(5); // Increment player score by 5
         }
     }
 }
+
+
+public enum FlowerRarity
+{
+    Common,
+    Uncommon,
+    Rare,
+    Legendary
+}
+
+public enum Modifiers
+{
+    movement_speed,
+    bullet_speed,
+    firing_rate,
+    health,
+    damage,
+    score,
+    flower_drop_rate,
+}
+
+public class Modifier
+{
+    public Modifiers modifierType;
+    public float value;
+
+    public Modifier(Modifiers modifierType, float value)
+    {
+        this.modifierType = modifierType;
+        this.value = value;
+    }
+
+    public override string ToString()
+    {
+        return $"{value * 100}% increased {Modifiers.GetName(typeof(Modifiers), modifierType)}";
+    }
+
+}
+
+
