@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Note: gameObject means the bullet that this script is attached to
 public class BulletScript : MonoBehaviour
 {
     public AudioClip explosionSound; // Sound effect for explosion
