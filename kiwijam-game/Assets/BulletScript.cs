@@ -3,7 +3,14 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public GameObject explosionPrefab; // Prefab for explosion effect
+    public GlobalGameStateScript _globalGameState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        _globalGameState = FindObjectOfType<GlobalGameStateScript>();
+    }
+
     void Start()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.up * 10f;
@@ -47,9 +54,7 @@ public class BulletScript : MonoBehaviour
             // destroy explosion effect after 1 second
             Destroy(explosion, 1f);
 
-            GlobalGameStateScript.playerScore += 10; // Increment player score by 10
-
-            Debug.Log("Enemy hit! Player score: " + GlobalGameStateScript.playerScore);
+            _globalGameState.ChangeScore(10); // Increment player score by 10
         }
 
 
