@@ -7,11 +7,12 @@ public class ScoreUIScript : MonoBehaviour
     public void Awake()
     {
         _scoreText = GetComponent<TMP_Text>();
+        UpdateScore();
     }
 
-    public void UpdateScore(GlobalGameStateScript globalGameState)
+    public void UpdateScore()
     {
-        _scoreText.text = "Score: " + globalGameState.playerScore.ToString();
+        _scoreText.text = "Score: " + GlobalGameStateScript.playerScore.ToString();
     }
 
 }
