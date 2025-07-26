@@ -13,11 +13,16 @@ public class PlayerBulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length == 0) return;
+
         //spawn a bullet prefab at the player's position every 0.2 seconds without checking for input
         if (Time.time % 0.2f < 0.01f)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
         }
+
     }
 }
 

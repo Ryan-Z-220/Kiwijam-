@@ -10,10 +10,12 @@ public class BulletScript : MonoBehaviour
 
         // set direction to the nearest enemy to the bullet
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length > 0)
+        if (enemies.Length != 0)
         {
             GameObject nearestEnemy = enemies[0];
+
             float nearestDistance = Vector2.Distance(transform.position, nearestEnemy.transform.position);
+            // Note: This is very slow
             foreach (GameObject enemy in enemies)
             {
                 float distance = Vector2.Distance(transform.position, enemy.transform.position);
@@ -26,15 +28,8 @@ public class BulletScript : MonoBehaviour
             Vector2 direction = (nearestEnemy.transform.position - transform.position).normalized;
             GetComponent<Rigidbody2D>().linearVelocity = direction * 10f;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
 
-
-        Destroy(gameObject, 4f);
-
-
+        Destroy(gameObject, 2f);
     }
 
     // Update is called once per frame
@@ -52,7 +47,9 @@ public class BulletScript : MonoBehaviour
             // destroy explosion effect after 1 second
             Destroy(explosion, 1f);
 
+            GlobalGameStateScript.playerScore += 10; // Increment player score by 10
 
+            Debug.Log("Enemy hit! Player score: " + GlobalGameStateScript.playerScore);
         }
 
 
