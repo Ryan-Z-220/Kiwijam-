@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    public AudioClip explosionSound; // Sound effect for explosion
+    public GameObject explosionPrefab; // Prefab for explosion effect
 
     public AudioClip deathSound; // Sound to play when the player dies
 
@@ -28,6 +30,15 @@ public class EnemyScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust for sprite orientation
         }
 
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(explosion, 1f);
+        _globalGameState.ChangeScore(10); // Increment player score by 10
+        AudioSource.PlayClipAtPoint(explosionSound, transform.position);
     }
 
     void OnTriggerEnter2D(Collider2D other)
