@@ -6,13 +6,18 @@ public class PlayerController2D : MonoBehaviour
 
 
     // Public variables
-    public float speed = 5f * FindObjectOfType<PlayerStats>().movementSpeedMultiplier; // The speed at which the player moves
+    public float speed = 5f; // The speed at which the player moves
     public bool canMoveDiagonally = true; // Controls whether the player can move diagonally
 
     // Private variables
     private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
     private Vector2 movement; // Stores the direction of player movement
     private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
+
+    void Awake()
+    {
+        speed *= FindObjectOfType<PlayerStats>().movementSpeedMultiplier;
+    }
 
     void Start()
     {

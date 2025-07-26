@@ -6,8 +6,12 @@ public class PlayerBulletScript : MonoBehaviour
     public GameObject bulletPrefab;
 
     float fireTimer = 0f;
-    public float fireRate = 0.2f * (1 / FindObjectOfType<PlayerStats>().firingRateMultiplier); // Time in seconds between bullet fires
+    public float fireRate = 0.2f; // Time in seconds between bullet fires
 
+    void Awake()
+    {
+        fireRate *= FindObjectOfType<PlayerStats>().firingRateMultiplier; // Adjust fire rate based on player stats
+    }
 
 
     // Update is called once per frame

@@ -15,28 +15,19 @@ public class BulletScript : MonoBehaviour
         _globalGameState = FindObjectOfType<GlobalGameStateScript>();
     }
 
-
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // check if the bullet is colliding with an enemy using physics2d
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.1f);
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             // Destroy the bullet and the enemy
-            Destroy(hit.collider.gameObject);
+            Destroy(other.gameObject);
             Destroy(gameObject);
             // Instantiate explosion effect
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            // destroy explosion effect after 1 second
+            // Destroy explosion effect after 1 second
             Destroy(explosion, 1f);
-
             _globalGameState.ChangeScore(10); // Increment player score by 10
-
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
-
         }
-
-
     }
 }
