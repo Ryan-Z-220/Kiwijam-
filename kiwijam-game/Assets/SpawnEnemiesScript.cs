@@ -3,7 +3,6 @@ using UnityEngine;
 public class SpawnEnemiesScript : MonoBehaviour
 {
     public GameObject enemyPrefab; // Reference to the enemy prefab
-
     public float spawnInterval = 2f; // Time interval between spawns
     private float spawnTimer = 0f;
 
