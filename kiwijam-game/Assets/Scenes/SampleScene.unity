@@ -5990,10 +5990,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1480207939}
         m_TargetAssemblyTypeName: ScoreUIScript, Assembly-CSharp
         m_MethodName: UpdateScore
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1886541972}
-          m_ObjectArgumentAssemblyTypeName: GlobalGameStateScript, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
