@@ -14,6 +14,12 @@ public class DeathMessageScript : MonoBehaviour
     {
         _messageText.enabled = true;
         _messageText.text = "You've been caught by a spider! Game Over.\n Final Score: " + GlobalGameStateScript.playerScore.ToString();
+        // hide the ScoreDisplay
+        GameObject scoreDisplay = GameObject.Find("ScoreDisplay");
+        if (scoreDisplay != null)
+        {
+            scoreDisplay.SetActive(false);
+        }
     }
 
 }
