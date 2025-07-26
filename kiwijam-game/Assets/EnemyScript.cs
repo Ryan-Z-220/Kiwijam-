@@ -7,6 +7,9 @@ public class EnemyScript : MonoBehaviour
 
     public AudioClip deathSound; // Sound to play when the player dies
 
+    public GameObject flowerPrefab; // Prefab for flower to drop when the enemy is killed
+
+
 
     private GlobalGameStateScript _globalGameState;
     public float speed = 3f; // Speed at which the enemy moves towards the player
@@ -39,6 +42,8 @@ public class EnemyScript : MonoBehaviour
         Destroy(explosion, 1f);
         _globalGameState.ChangeScore(10); // Increment player score by 10
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+        GameObject flower = Instantiate(flowerPrefab, transform.position, Quaternion.identity);
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
