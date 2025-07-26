@@ -3,6 +3,9 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
 
+    public AudioClip deathSound; // Sound to play when the player dies
+
+
     private GlobalGameStateScript _globalGameState;
     public float speed = 3f; // Speed at which the enemy moves towards the player
     void Awake()
@@ -19,10 +22,14 @@ public class EnemyScript : MonoBehaviour
         {
             Vector2 direction = (player.transform.position - transform.position).normalized;
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+            // Optionally, rotate the enemy to face the player
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust for sprite orientation
         }
 
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -33,6 +40,8 @@ public class EnemyScript : MonoBehaviour
             Debug.Log("Player hit by enemy! Game Over.");
             _globalGameState.GameOver();
             Time.timeScale = 0;
+            // Play death sound
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
         }
     }
 }
