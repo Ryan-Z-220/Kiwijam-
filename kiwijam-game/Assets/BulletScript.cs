@@ -7,38 +7,14 @@ public class BulletScript : MonoBehaviour
     public GlobalGameStateScript _globalGameState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+
+
+
     void Awake()
     {
         _globalGameState = FindObjectOfType<GlobalGameStateScript>();
     }
 
-    void Start()
-    {
-        GetComponent<Rigidbody2D>().linearVelocity = transform.up * 10f;
-
-        // set direction to the nearest enemy to the bullet
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length != 0)
-        {
-            GameObject nearestEnemy = enemies[0];
-
-            float nearestDistance = Vector2.Distance(transform.position, nearestEnemy.transform.position);
-            // Note: This is very slow
-            foreach (GameObject enemy in enemies)
-            {
-                float distance = Vector2.Distance(transform.position, enemy.transform.position);
-                if (distance < nearestDistance)
-                {
-                    nearestEnemy = enemy;
-                    nearestDistance = distance;
-                }
-            }
-            Vector2 direction = (nearestEnemy.transform.position - transform.position).normalized;
-            GetComponent<Rigidbody2D>().linearVelocity = direction * 10f;
-        }
-
-        Destroy(gameObject, 2f);
-    }
 
     // Update is called once per frame
     void Update()
