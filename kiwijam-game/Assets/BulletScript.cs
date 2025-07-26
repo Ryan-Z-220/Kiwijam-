@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public AudioClip explosionSound; // Sound effect for explosion
     public GameObject explosionPrefab; // Prefab for explosion effect
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +51,10 @@ public class BulletScript : MonoBehaviour
             GlobalGameStateScript.playerScore += 10; // Increment player score by 10
 
             Debug.Log("Enemy hit! Player score: " + GlobalGameStateScript.playerScore);
+
+            // Play explosion sound effect
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+
         }
 
 
