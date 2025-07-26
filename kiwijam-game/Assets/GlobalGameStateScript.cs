@@ -15,6 +15,8 @@ public class GlobalGameStateScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            playerScore = 0;
+            OnScoreChanged.Invoke();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
