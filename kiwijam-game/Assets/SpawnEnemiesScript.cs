@@ -35,7 +35,7 @@ public class SpawnEnemiesScript : MonoBehaviour
                 }
             }
             GameObject enemy = Instantiate(enemyPrefab as GameObject, spawnPosition, Quaternion.identity);
-            enemy.GetComponent<EnemyScript>().speed = Random.Range(1f, 5f); // Random speed between 1 and 5
+            enemy.GetComponent<EnemyScript>().speed = Random.Range(2f, 8f); // Random speed between 2 and 8
         }
     }
 }
