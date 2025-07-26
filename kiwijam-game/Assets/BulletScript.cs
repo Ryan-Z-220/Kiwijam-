@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public GameObject explosionPrefab; // Prefab for explosion effect
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,7 +46,12 @@ public class BulletScript : MonoBehaviour
         {
             // Destroy the bullet and the enemy
             Destroy(hit.collider.gameObject);
-            Destroy(gameObject);        
+            Destroy(gameObject);
+            // Instantiate explosion effect
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            // destroy explosion effect after 1 second
+            Destroy(explosionPrefab, 1f);
+
 
         }
 
