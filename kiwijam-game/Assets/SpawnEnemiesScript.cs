@@ -24,7 +24,7 @@ public class SpawnEnemiesScript : MonoBehaviour
                 while (notTooClose == false)
                 {
                     float distanceToPlayer = Vector2.Distance(spawnPosition, player.transform.position);
-                    if (distanceToPlayer < 2f) // If too close, find a new position
+                    if (distanceToPlayer < 4f) // If too close, find a new position
                     {
                         spawnPosition = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
                     }
