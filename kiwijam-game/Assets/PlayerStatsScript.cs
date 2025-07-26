@@ -2,15 +2,7 @@ using UnityEngine;
 
 public class PlayerStatsScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float movementSpeedMultiplier = 1.0f;
+    public int bonusHealth = 0;
+    public float bulletSpeedMultiplier = 1.0f;
 }
