@@ -25,10 +25,10 @@ public class BulletScript : MonoBehaviour
             Vector2 direction = (nearestEnemy.transform.position - transform.position).normalized;
             GetComponent<Rigidbody2D>().linearVelocity = direction * 10f;
         }
-
-
-
-
+        else
+        {
+            Destroy(gameObject);
+        }
 
 
         Destroy(gameObject, 4f);

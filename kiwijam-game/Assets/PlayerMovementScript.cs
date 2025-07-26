@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
@@ -77,7 +78,7 @@ public class PlayerController2D : MonoBehaviour
         if (x == 0 && y == 0) return;
 
         // Calculate the rotation angle based on input direction
-        float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg + 270;
         // Apply the rotation to the player
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
