@@ -105,3 +105,6 @@
 
 #unity package cache
 **/Library/PackageCache/
+
+
+**/web_build/
