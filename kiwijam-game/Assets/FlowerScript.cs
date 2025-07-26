@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -43,6 +44,15 @@ public class Modifier
 
 public class FlowerScript : MonoBehaviour
 {
+
+    public static readonly Dictionary<FlowerRarity, Color> rarityColors = new()
+    {
+        { FlowerRarity.Common, Color.white },
+        { FlowerRarity.Uncommon, Color.green },
+        { FlowerRarity.Rare, Color.blue },
+        { FlowerRarity.Legendary, Color.yellow }
+    };
+
     private GlobalGameStateScript _globalGameState;
 
     public FlowerRarity rarity;
@@ -51,6 +61,7 @@ public class FlowerScript : MonoBehaviour
     void Awake()
     {
         _globalGameState = FindObjectOfType<GlobalGameStateScript>();
+        modifiers = new Modifier[0];
 
         // roll rarity
         int rarityRoll = UnityEngine.Random.Range(0, 100);
@@ -81,6 +92,9 @@ public class FlowerScript : MonoBehaviour
             _ => throw new ArgumentOutOfRangeException()
         };
 
+        // set the color of the flower based on rarity
+        GetComponent<SpriteRenderer>().color = rarityColors[rarity];
+
         for (int i = 0; i < modifierCount; i++)
         {
             Modifiers modifierType = (Modifiers)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Modifiers)).Length);
@@ -92,15 +106,6 @@ public class FlowerScript : MonoBehaviour
             float value = UnityEngine.Random.Range(1, 30) / 100f; // Random value between 1 and 30
             Modifier newModifier = new Modifier(modifierType, value);
             modifiers = modifiers.Append(newModifier).ToArray();
-        }
-
-
-        // Log the flower's rarity and modifiers
-        Debug.Log($"Flower Rarity: {rarity}");
-
-        foreach (var modifier in modifiers)
-        {
-            Debug.Log(modifier.ToString());
         }
     }
 
