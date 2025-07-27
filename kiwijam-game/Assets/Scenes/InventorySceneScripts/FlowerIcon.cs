@@ -36,7 +36,7 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 var image = GetComponent<UnityEngine.UI.Image>();
                 if (Inventory.equippedFlowers.Contains(flower))
                 {
-                    image.color = Color.powderBlue; // change color to powder blue when equipped
+                    image.color = Color.red; // change color to red when equipped
 
                 }
             }
