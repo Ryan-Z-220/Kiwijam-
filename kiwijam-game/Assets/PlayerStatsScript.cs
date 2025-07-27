@@ -9,6 +9,7 @@ public class PlayerStatsScript : MonoBehaviour
     public float firingRateMultiplier = 1.0f;
     public float scoreMultiplier = 1.0f;
     public float flowerDropRateMultiplier = 1.0f;
+    public int bonusHealth = 2; // Bonus health from equipped flowers
     public bool temporarilyInvincible = false;
 
 
