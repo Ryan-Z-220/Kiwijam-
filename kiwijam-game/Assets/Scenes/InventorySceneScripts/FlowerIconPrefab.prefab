@@ -88,3 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8e75f8e8ebbc34699e0f7bcc1ed173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  white_flower: {fileID: 5353798608976283715, guid: 6b096cd78e2da954e937f37327010351, type: 3}
+  blue_flower: {fileID: -5252801867926719225, guid: d5c22d9970bbfd44e81fe044ab33c8eb, type: 3}
+  red_flower: {fileID: -682061260844400398, guid: f82d3e6dbe4041c44bf0a677c56c838a, type: 3}
