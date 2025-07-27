@@ -16,7 +16,14 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         // change the icon's color based on the flower's rarity
         var image = GetComponent<UnityEngine.UI.Image>();
-        image.color = Flower.rarityColors[flower.rarity];
+        if (flower.isEquipped)
+        {
+            image.color = Color.red; // change color to red when equipped
+        }
+        else
+        {
+            image.color = Flower.rarityColors[flower.rarity]; // set color to rarity color
+        }
     }
 
     public virtual void OnPointerClick(PointerEventData eventData)
