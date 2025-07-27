@@ -12,7 +12,6 @@ public class FlowerObject : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject); // Ensure the flower persists across scenes
         _globalGameState = FindObjectOfType<GlobalGameStateScript>();
         flower = new Flower();
 

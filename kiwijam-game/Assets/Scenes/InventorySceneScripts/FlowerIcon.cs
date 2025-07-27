@@ -1,3 +1,5 @@
+using System.Linq;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,11 +26,24 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (flower.isEquipped)
             {
                 Inventory.UnequipFlower(flower);
+                var image = GetComponent<UnityEngine.UI.Image>();
+                image.color = Flower.rarityColors[flower.rarity]; // reset color to rarity color
+
             }
             else
             {
                 Inventory.EquipFlower(flower);
+                var image = GetComponent<UnityEngine.UI.Image>();
+                if (Inventory.equippedFlowers.Contains(flower))
+                {
+                    image.color = Color.powderBlue; // change color to powder blue when equipped
+
+                }
             }
+
+            // equipped panel update
+            var equippedPanel = FindObjectOfType<EquippedPanel>();
+            equippedPanel.UpdatePanel();
         }
     }
 
