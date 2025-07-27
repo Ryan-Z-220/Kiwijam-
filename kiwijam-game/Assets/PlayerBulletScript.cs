@@ -10,7 +10,7 @@ public class PlayerBulletScript : MonoBehaviour
 
     void Awake()
     {
-        fireRate *= FindObjectOfType<PlayerStats>().firingRateMultiplier; // Adjust fire rate based on player stats
+        fireRate *= FindObjectOfType<PlayerStatsScript>().firingRateMultiplier; // Adjust fire rate based on player stats
     }
 
 
@@ -44,7 +44,7 @@ public class PlayerBulletScript : MonoBehaviour
             Vector2 dir = nearestEnemy.transform.position - bullet.transform.position;
             bullet.transform.up = dir.normalized;
 
-            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * 10f * FindObjectOfType<PlayerStats>().bulletSpeedMultiplier;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * 10f * FindObjectOfType<PlayerStatsScript>().bulletSpeedMultiplier;
 
             Destroy(bullet, 2f); // Destroy the bullet after 2 seconds
         }

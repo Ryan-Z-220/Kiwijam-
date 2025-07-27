@@ -16,7 +16,7 @@ public class PlayerController2D : MonoBehaviour
 
     void Awake()
     {
-        speed *= FindObjectOfType<PlayerStats>().movementSpeedMultiplier;
+        speed *= FindObjectOfType<PlayerStatsScript>().movementSpeedMultiplier;
     }
 
     void Start()
