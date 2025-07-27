@@ -67,6 +67,11 @@ public class Flower
             modifiers = modifiers.Append(newModifier).ToArray();
         }
     }
+
+    public override string ToString()
+    {
+        return $"{rarity} with {modifiers.Length} modifiers";
+    }
 }
 
 

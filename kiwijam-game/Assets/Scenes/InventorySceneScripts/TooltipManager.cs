@@ -25,7 +25,8 @@ public class TooltipManager : MonoBehaviour
 
     void Update()
     {
-        transform.position = Input.mousePosition; // Update tooltip position to follow the mouse
+        // Update tooltip position to follow the mouse with a slight offset
+        transform.position = Input.mousePosition + new Vector3(-10, 20, 0);
     }
 
     public void SetAndShowTooltip(Flower flower)
@@ -36,9 +37,14 @@ public class TooltipManager : MonoBehaviour
         FlowerRarity rarity = flower.rarity;
         Color color = Flower.rarityColors[rarity];
 
-        string message = $"Rarity: {rarity}\nModifiers: {string.Join(", ", System.Linq.Enumerable.Select(modifiers, m => m.ToString()))}";
 
-        Debug.Log($"Setting tooltip with message: {message} and color: {color}");
+        // make new tooltip TMPs for each modifier
+        foreach (Modifier modifier in modifiers)
+        {
+            GameObject tooltip = Instantiate(tooltipPrefab, transform);
+            Tooltip tooltipComponent = tooltip.GetComponent<Tooltip>();
+            tooltipComponent.SetTooltip(modifier.ToString(), Color.white);
+        }
     }
 
     public void HideTooltip()
