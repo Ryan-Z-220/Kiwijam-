@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -11,10 +12,11 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject flowerPrefab; // Prefab for flower to drop when the enemy is killed
 
-
+    public static int flowerDropChance = 30; // Chance to drop a flower (in percentage)
 
     private GlobalGameStateScript _globalGameState;
-    public float speed = 3f; // Speed at which the enemy moves towards the player
+    public static float speed = 3f; // Speed at which the enemy moves towards the player
+    public float localSpeed = 1f; // Local speed for this enemy instance
     void Awake()
     {
         _globalGameState = FindObjectOfType<GlobalGameStateScript>();
@@ -28,7 +30,7 @@ public class EnemyScript : MonoBehaviour
         if (player != null)
         {
             Vector2 direction = (player.transform.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * localSpeed * Time.deltaTime);
 
             // Optionally, rotate the enemy to face the player
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -44,8 +46,12 @@ public class EnemyScript : MonoBehaviour
         Destroy(explosion, 1f);
         _globalGameState.ChangeScore(10); // Increment player score by 10
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
-        GameObject flower = Instantiate(flowerPrefab, transform.position, Quaternion.identity);
 
+        // Check if a flower should be dropped
+        if (UnityEngine.Random.Range(0, 100) < flowerDropChance)
+        {
+            GameObject flower = Instantiate(flowerPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

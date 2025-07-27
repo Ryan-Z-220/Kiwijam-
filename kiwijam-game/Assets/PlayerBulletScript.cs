@@ -6,13 +6,8 @@ public class PlayerBulletScript : MonoBehaviour
     public GameObject bulletPrefab;
 
     float fireTimer = 0f;
-    public float fireRate = 0.2f; // Time in seconds between bullet fires
-
-    void Awake()
-    {
-        fireRate *= FindObjectOfType<PlayerStatsScript>().firingRateMultiplier; // Adjust fire rate based on player stats
-    }
-
+    public static float fireRate = 1f; // Time in seconds between bullet fires
+    public static float bulletSpeed = 5f; // Speed of the bullet
 
     // Update is called once per frame
     void Update()
@@ -44,7 +39,7 @@ public class PlayerBulletScript : MonoBehaviour
             Vector2 dir = nearestEnemy.transform.position - bullet.transform.position;
             bullet.transform.up = dir.normalized;
 
-            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * 10f * FindObjectOfType<PlayerStatsScript>().bulletSpeedMultiplier;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * bulletSpeed;
 
             Destroy(bullet, 2f); // Destroy the bullet after 2 seconds
         }

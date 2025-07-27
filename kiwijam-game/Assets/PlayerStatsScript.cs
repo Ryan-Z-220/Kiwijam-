@@ -50,5 +50,11 @@ public class PlayerStatsScript : MonoBehaviour
                 }
             }
         }
+
+        PlayerBulletScript.fireRate = 1f * firingRateMultiplier;
+        PlayerBulletScript.bulletSpeed = 5f * bulletSpeedMultiplier;
+
+        PlayerController2D.speed = 3f * movementSpeedMultiplier;
+        EnemyScript.flowerDropChance = (int)Mathf.Round(30 * flowerDropRateMultiplier);
     }
 }

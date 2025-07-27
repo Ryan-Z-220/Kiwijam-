@@ -4,6 +4,12 @@ public class EquippedPanel : MonoBehaviour
 {
     public GameObject flowerPrefab;
 
+    public void Awake()
+    {
+        // Initialize the equipped panel with the current flowers
+        UpdatePanel();
+    }
+
     public void UpdatePanel()
     {
         // Clear existing icons

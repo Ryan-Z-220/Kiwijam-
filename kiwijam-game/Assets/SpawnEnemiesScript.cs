@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpawnEnemiesScript : MonoBehaviour
 {
     public GameObject enemyPrefab; // Reference to the enemy prefab
+
     public float spawnInterval = 2f; // Time interval between spawns
     private float spawnTimer = 0f;
 
@@ -43,7 +44,7 @@ public class SpawnEnemiesScript : MonoBehaviour
             }
         }
         GameObject enemy = Instantiate(enemyPrefab as GameObject, spawnPosition, Quaternion.identity);
-        enemy.GetComponent<EnemyScript>().speed = Random.Range(2f, 8f); // Random speed between 2 and 8
+        enemy.GetComponent<EnemyScript>().localSpeed = Random.Range(1f, 1.5f); // Random speed between 2 and 8
 
     }
 }
