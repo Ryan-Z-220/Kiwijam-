@@ -132,6 +132,7 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: 68ccbd5fce3eb1b4fb2ef1e15c747e0c, type: 3}
   explosionPrefab: {fileID: 6233429603411456119, guid: 062a0cdd9ab5c437a938f42d89f177f0, type: 3}
   deathSound: {fileID: 8300000, guid: d949466ac2fd6d3488a4c2ac6c202abb, type: 3}
+  hitSound: {fileID: 8300000, guid: 68ccbd5fce3eb1b4fb2ef1e15c747e0c, type: 3}
   flowerPrefab: {fileID: 5415769121204358083, guid: 1595995680341d54abfc83516d85eee7, type: 3}
   speed: 2.5
 --- !u!61 &8669516647535181626
