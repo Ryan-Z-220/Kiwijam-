@@ -9,9 +9,9 @@ public class Flower
     public static readonly Dictionary<FlowerRarity, Color> rarityColors = new()
     {
         { FlowerRarity.Common, Color.white },
-        { FlowerRarity.Uncommon, Color.green },
+        { FlowerRarity.Uncommon, Color.white },
         { FlowerRarity.Rare, Color.blue },
-        { FlowerRarity.Legendary, Color.yellow }
+        { FlowerRarity.Legendary, Color.red }
     };
 
     private GlobalGameStateScript _globalGameState;
@@ -27,11 +27,11 @@ public class Flower
 
         // roll rarity
         int rarityRoll = UnityEngine.Random.Range(0, 100);
-        if (rarityRoll < 5)
+        if (rarityRoll < 10)
         {
             rarity = FlowerRarity.Legendary;
         }
-        else if (rarityRoll < 20)
+        else if (rarityRoll < 40)
         {
             rarity = FlowerRarity.Rare;
         }

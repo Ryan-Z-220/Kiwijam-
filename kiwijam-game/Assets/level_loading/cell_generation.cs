@@ -11,7 +11,7 @@ public class SCR_PerlinNoiseMap : MonoBehaviour
     public GameObject prefab_forest;
     public GameObject prefab_hills;
     public GameObject prefab_mountains;
-    public int seed = 500;
+    public int seed = 560;
 
     static int map_width = 20;
     static int map_height = 20;

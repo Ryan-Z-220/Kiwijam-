@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FlowerObject : MonoBehaviour
 {
+    public UnityEngine.Sprite white_flower;
+    public UnityEngine.Sprite blue_flower;
+    public UnityEngine.Sprite red_flower;
 
     public Flower flower;
 
@@ -16,7 +19,23 @@ public class FlowerObject : MonoBehaviour
         flower = new Flower();
 
         // set the color of the flower based on rarity
-        GetComponent<SpriteRenderer>().color = Flower.rarityColors[flower.rarity];
+
+        //GetComponent<SpriteRenderer>().color = Flower.rarityColors[flower.rarity];
+
+        if (Flower.rarityColors[flower.rarity] == Color.red)
+        {
+            GetComponent<SpriteRenderer>().sprite = red_flower;
+        }
+        else if (Flower.rarityColors[flower.rarity] == Color.blue)
+        {
+            GetComponent<SpriteRenderer>().sprite = blue_flower;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = white_flower;
+        }
+
+
 
         if (UnityEngine.Random.Range(0, 100) < 50) // 50% chance to flip the flower sprite
         {
