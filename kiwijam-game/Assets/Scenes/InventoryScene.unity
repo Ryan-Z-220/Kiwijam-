@@ -1181,6 +1181,8 @@ GameObject:
   - component: {fileID: 1757044523}
   - component: {fileID: 1757044525}
   - component: {fileID: 1757044524}
+  - component: {fileID: 1757044527}
+  - component: {fileID: 1757044526}
   m_Layer: 5
   m_Name: EquippedItems
   m_TagString: Untagged
@@ -1245,6 +1247,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757044522}
   m_CullTransparentMesh: 1
+--- !u!114 &1757044526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757044522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d4b0a6d110eed4a85484a68beda6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerPrefab: {fileID: 1260450535626440436, guid: 8a349a34d84989749bbf7bea5e38f580, type: 3}
+--- !u!114 &1757044527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757044522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 20
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!1 &1996148517
 GameObject:
   m_ObjectHideFlags: 0
