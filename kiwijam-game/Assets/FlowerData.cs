@@ -88,8 +88,6 @@ public enum Modifiers
     movement_speed,
     bullet_speed,
     firing_rate,
-    health,
-    damage,
     score,
     flower_drop_rate,
 }
