@@ -7,11 +7,20 @@ public class AddFlowersFromInventory : MonoBehaviour
 
     public void Awake()
     {
+        Update();
+    }
+
+    public void Update()
+    {
+        // Clear existing icons
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach (Flower flower in Inventory.flowers)
         {
-            GameObject flowerIconObject = Instantiate(flowerPrefab);
-            // set as a child of the current object
-            flowerIconObject.transform.SetParent(transform, false);
+            GameObject flowerIconObject = Instantiate(flowerPrefab, transform);
             FlowerIcon flowerIcon = flowerIconObject.GetComponent<FlowerIcon>();
             flowerIcon.flower = flower;
         }
