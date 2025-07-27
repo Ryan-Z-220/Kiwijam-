@@ -17,8 +17,10 @@ public class GlobalGameStateScript : MonoBehaviour
         {
             playerScore = 0;
             OnScoreChanged.Invoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("InventoryScene");
             Time.timeScale = 1;
+
         }
     }
 

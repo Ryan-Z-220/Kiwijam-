@@ -7,16 +7,6 @@ public class AddFlowersFromInventory : MonoBehaviour
 
     public void Awake()
     {
-        // test data flower array
-        Inventory.flowers = new Flower[]
-        {
-            new() { rarity = FlowerRarity.Common, modifiers = new Modifier[0] },
-            new() { rarity = FlowerRarity.Uncommon, modifiers = new Modifier[0] },
-            new() { rarity = FlowerRarity.Rare, modifiers = new Modifier[0] },
-            new() { rarity = FlowerRarity.Legendary, modifiers = new Modifier[0] }
-        };
-
-
         foreach (Flower flower in Inventory.flowers)
         {
             GameObject flowerIconObject = Instantiate(flowerPrefab);

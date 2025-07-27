@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class FlowerIcon : MonoBehaviour
+public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Flower flower; // Reference to the flower this icon represents
+    public Flower flower;
 
     public FlowerIcon(Flower flower)
     {
@@ -11,6 +12,33 @@ public class FlowerIcon : MonoBehaviour
 
     void Start()
     {
-        GetComponent<SpriteRenderer>().color = Flower.rarityColors[flower.rarity];
+        // change the icon's color based on the flower's rarity
+        var image = GetComponent<UnityEngine.UI.Image>();
+        image.color = Flower.rarityColors[flower.rarity];
+    }
+
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            if (flower.isEquipped)
+            {
+                Inventory.UnequipFlower(flower);
+            }
+            else
+            {
+                Inventory.EquipFlower(flower);
+            }
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TooltipManager.Instance.SetAndShowTooltip(flower);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipManager.Instance.HideTooltip();
     }
 }
