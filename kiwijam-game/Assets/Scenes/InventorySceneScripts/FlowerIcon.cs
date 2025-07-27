@@ -6,6 +6,10 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 {
     public Flower flower;
 
+    public UnityEngine.Sprite white_flower;
+    public UnityEngine.Sprite blue_flower;
+    public UnityEngine.Sprite red_flower;
+
     public FlowerIcon(Flower flower)
     {
         this.flower = flower;
@@ -15,13 +19,26 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         // change the icon's color based on the flower's rarity
         var image = GetComponent<UnityEngine.UI.Image>();
-        if (flower.isEquipped)
+        if (Flower.rarityColors[flower.rarity] == Color.red)
         {
-            image.color = Color.red; // change color to red when equipped
+            image.sprite = red_flower;
+        }
+        else if (Flower.rarityColors[flower.rarity] == Color.blue)
+        {
+            image.sprite = blue_flower;
         }
         else
         {
-            image.color = Flower.rarityColors[flower.rarity]; // set color to rarity color
+            image.sprite = white_flower;
+        }
+
+        if (flower.isEquipped)
+        {
+            image.color = Color.yellow; // change color to yellow when equipped
+        }
+        else
+        {
+            image.color = Color.white; // set color to rarity color
         }
     }
 
@@ -33,7 +50,8 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             {
                 Inventory.UnequipFlower(flower);
                 var image = GetComponent<UnityEngine.UI.Image>();
-                image.color = Flower.rarityColors[flower.rarity]; // reset color to rarity color
+
+                image.color = Color.white; // reset color
 
             }
             else
@@ -42,7 +60,7 @@ public class FlowerIcon : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 var image = GetComponent<UnityEngine.UI.Image>();
                 if (Inventory.equippedFlowers.Contains(flower))
                 {
-                    image.color = Color.red; // change color to red when equipped
+                    image.color = Color.yellow; // change color to yellow when equipped
 
                 }
             }
