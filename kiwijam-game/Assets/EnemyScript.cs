@@ -7,6 +7,8 @@ public class EnemyScript : MonoBehaviour
 
     public AudioClip deathSound; // Sound to play when the player dies
 
+    public AudioClip hitSound; // Sound to play when the enemy is hit
+
     public GameObject flowerPrefab; // Prefab for flower to drop when the enemy is killed
 
 
@@ -50,14 +52,39 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //destroy the player and the enemy
-            Destroy(other.gameObject); // Destroy the player
+            if (GameObject.FindWithTag("PlayerStats").GetComponent<PlayerStatsScript>().temporarilyInvincible)
+            {
+                return; // Ignore collision if player is temporarily invincible
+            }
             Destroy(gameObject); // Destroy the enemy
-            Debug.Log("Player hit by enemy! Game Over.");
-            _globalGameState.GameOver();
-            Time.timeScale = 0;
-            // Play death sound
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
+            //find playerStatsScript and decrease bonus health by one
+            GameObject playerStatsObject = GameObject.FindWithTag("PlayerStats");
+            PlayerStatsScript playerStats = playerStatsObject?.GetComponent<PlayerStatsScript>();
+            if (playerStats != null)
+            {
+                playerStats.bonusHealth--;
+            }
+
+            if (playerStats.bonusHealth == -1)
+            {
+                //destroy the player and the enemy
+                Destroy(other.gameObject); // Destroy the player
+                Debug.Log("Player hit by enemy! Game Over.");
+                _globalGameState.GameOver();
+                Time.timeScale = 0;
+                // Play death sound
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            }
+            else
+            {
+                playerStats.temporarilyInvincible = true; // Set player to temporarily invincible
+                Debug.Log("Player hit by enemy! Bonus health remaining: " + playerStats.bonusHealth);
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
+                // make the player flash red for 0.5 seconds
+                SpriteRenderer playerSprite = other.GetComponent<SpriteRenderer>();
+                playerStats.StartCoroutine(playerStats.FlashRedAndReset(playerSprite));
+            }
         }
     }
 }
