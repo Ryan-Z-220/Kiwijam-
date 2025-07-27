@@ -11,6 +11,8 @@ public class GlobalGameStateScript : MonoBehaviour
     public static int playerScore = 0;
     public bool isGameOver = false;
 
+    public static float scoreMultiplier = 1.0f;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -33,7 +35,7 @@ public class GlobalGameStateScript : MonoBehaviour
 
     public void ChangeScore(int amount)
     {
-        playerScore += amount;
+        playerScore += Mathf.RoundToInt(amount * scoreMultiplier);
         OnScoreChanged.Invoke();
     }
 

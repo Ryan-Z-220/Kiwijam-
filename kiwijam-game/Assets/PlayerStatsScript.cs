@@ -56,5 +56,7 @@ public class PlayerStatsScript : MonoBehaviour
 
         PlayerController2D.speed = 3f * movementSpeedMultiplier;
         EnemyScript.flowerDropChance = (int)Mathf.Round(30 * flowerDropRateMultiplier);
+
+        GlobalGameStateScript.scoreMultiplier = scoreMultiplier;
     }
 }
