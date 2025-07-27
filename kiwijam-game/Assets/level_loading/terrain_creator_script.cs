@@ -10,8 +10,12 @@ public class cell_loader : MonoBehaviour
 
     private bool[,] loaded_cells = new bool[5, 5];
 
+    private GlobalGameStateScript _globalGameState;
 
-
+    void Awake()
+    {
+        _globalGameState = FindObjectOfType<GlobalGameStateScript>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,7 +40,7 @@ public class cell_loader : MonoBehaviour
             )
         {
             loaded_cells[(int)current_cell.x, (int)current_cell.y] = true;
-
+            _globalGameState.ChangeScore(50);
             Debug.Log("try to load" + current_cell);
             GameObject cell_scene = Instantiate(cell);
             cell_scene.GetComponent<SCR_PerlinNoiseMap>().cell_position = current_cell;

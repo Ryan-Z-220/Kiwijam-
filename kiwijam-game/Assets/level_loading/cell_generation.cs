@@ -11,6 +11,7 @@ public class SCR_PerlinNoiseMap : MonoBehaviour
     public GameObject prefab_forest;
     public GameObject prefab_hills;
     public GameObject prefab_mountains;
+    public int seed = 500;
 
     static int map_width = 20;
     static int map_height = 20;
@@ -89,8 +90,8 @@ public class SCR_PerlinNoiseMap : MonoBehaviour
             to the number of tiles available. **/
 
         float raw_perlin = Mathf.PerlinNoise(
-            (x - x_offset) / magnification,
-            (y - y_offset) / magnification
+            (x - x_offset + seed) / magnification,
+            (y - y_offset + seed) / magnification
         );
         float clamp_perlin = Mathf.Clamp01(raw_perlin); // Thanks: youtu.be/qNZ-0-7WuS8&lc=UgyoLWkYZxyp1nNc4f94AaABAg
         float scaled_perlin = clamp_perlin * tileset.Count;
