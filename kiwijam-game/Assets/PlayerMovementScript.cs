@@ -33,6 +33,11 @@ public class PlayerController2D : MonoBehaviour
         {
             // Set movement direction based on input
             movement = new Vector2(horizontalInput, verticalInput);
+            // Normalize the movement vector to ensure consistent speed in all directions
+            if (movement.magnitude > 0)
+            {
+                movement = movement.normalized;
+            }
             // Optionally rotate the player based on movement direction
             RotatePlayer(horizontalInput, verticalInput);
         }
