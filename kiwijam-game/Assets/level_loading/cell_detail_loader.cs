@@ -25,7 +25,7 @@ public class cell_detail_loader : MonoBehaviour
             Instantiate(objectlist[choice], transform.position + new Vector3(Random.Range(1, 19), Random.Range(1, 19), 0), transform.rotation);
         }
 
-        for (int i = 0; i < (Random.Range(5, 10)); i++)
+        for (int i = 0; i < (Random.Range(10, 15)); i++)
         {
             Instantiate(enemy, transform.position + new Vector3(Random.Range(5, 15), Random.Range(5, 15), 0), transform.rotation);
         }
