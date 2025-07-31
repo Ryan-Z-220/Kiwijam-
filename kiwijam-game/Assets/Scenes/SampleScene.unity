@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 12.8}
+  m_AnchoredPosition: {x: 80, y: 12.799988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118224387
@@ -851,15 +851,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -920,7 +920,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1144.3337, y: 595.3196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1427908407
 GameObject:
@@ -1054,7 +1054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b956d6bc8784e53a4870917382a67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   canMoveDiagonally: 1
 --- !u!199 &1427908412
 ParticleSystemRenderer:
@@ -5869,7 +5868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8961319878575802437, guid: 64a33364116e04cfcad4d1580640ca2f, type: 3}
-  fireRate: 0.2
 --- !u!58 &1427908415
 CircleCollider2D:
   m_ObjectHideFlags: 0
